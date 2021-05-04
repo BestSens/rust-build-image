@@ -1,6 +1,4 @@
 [build]
-rustflags = ["-C", "target-feature=+crt-static", "-C", "link-arg=-s"]
-
 [target.arm-unknown-linux-gnueabihf]
 linker = "arm-linux-gnueabihf-gcc"
 rustflags = ["-C", "target-feature=+crt-static", "-C", "link-arg=-s"]
