@@ -1,4 +1,4 @@
-FROM rust
+FROM rust:1.76.0-slim-bookworm
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get install -y gcc-arm-linux-gnueabihf mingw-w64
 # RUN rustup toolchain install stable-x86_64-pc-windows-gnu
 RUN rustup target add arm-unknown-linux-gnueabihf
