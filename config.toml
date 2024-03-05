@@ -1,6 +1,7 @@
 [build]
 [env]
-OPENSSL_STATIC = "1"
+X86_64_PC_WINDOWS_GNU_OPENSSL_STATIC = "1"
+X86_64_PC_WINDOWS_GNU_OPENSSL_DIR = "/usr/lib/x86_64-w64-mingw32"
 
 [target.x86_64-pc-windows-gnu]
 rustflags = ["-C", "target-feature=+crt-static", "-C", "link-arg=-s"]

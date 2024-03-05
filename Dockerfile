@@ -1,7 +1,15 @@
-FROM rust:1.76.0-slim-bookworm
-RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get install -y mingw-w64
-# RUN rustup toolchain install stable-x86_64-pc-windows-gnu
+FROM rust:1.76.0
+RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get install --no-install-recommends -y \
+	mingw-w64 \
+	pkg-config \
+	cmake \
+	libssl-dev && \
+	rm -Rf /var/lib/apt/lists/*
+RUN git clone --branch openssl-3.2.1 --depth 1 https://github.com/openssl/openssl.git && \
+	cd openssl && \
+	./Configure --cross-compile-prefix=x86_64-w64-mingw32- mingw64 --prefix=/usr/lib/x86_64-w64-mingw32 && \
+	make -j 6 && make install && \
+	cd .. && \
+	rm -Rf openssl
 RUN rustup target add x86_64-pc-windows-gnu
-COPY config $CARGO_HOME/config
-
-ADD openssl_native.tar.gz /opt/openssl-3
+COPY config.toml /.cargo/config.toml
