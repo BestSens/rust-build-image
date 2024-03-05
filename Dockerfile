@@ -1,9 +1,9 @@
 FROM rust:1.76.0
+RUN curl -fsSL https://deb.nodesource.com/setup_21.x | bash -
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get install --no-install-recommends -y \
 	mingw-w64 \
-	pkg-config \
 	cmake \
-	libssl-dev && \
+	nodejs && \
 	rm -Rf /var/lib/apt/lists/*
 RUN git clone --branch openssl-3.2.1 --depth 1 https://github.com/openssl/openssl.git && \
 	cd openssl && \
