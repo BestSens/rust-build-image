@@ -5,7 +5,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get install --no-ins
 	cmake \
 	nodejs && \
 	rm -Rf /var/lib/apt/lists/*
-RUN git clone --branch openssl-3.3.1 --depth 1 https://github.com/openssl/openssl.git && \
+RUN git clone --branch openssl-3.4.0 --depth 1 https://github.com/openssl/openssl.git && \
 	cd openssl && \
 	./Configure --cross-compile-prefix=x86_64-w64-mingw32- mingw64 --prefix=/usr/lib/x86_64-w64-mingw32 && \
 	make -j 6 && make install && \
