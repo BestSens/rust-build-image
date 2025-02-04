@@ -1,4 +1,4 @@
-FROM rust:1.78.0
+FROM rust:1.84.1
 RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -y && apt-get install --no-install-recommends -y \
 	mingw-w64 \
